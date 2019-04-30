@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUI()
     }
 }
@@ -20,18 +19,12 @@ class ViewController: UIViewController {
 extension ViewController {
     
     func setUI() {
-        let marquee = LzMarqueeView(frame: CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: 60))
-        marquee.backgroundColor = UIColor.orange
-        self.view.addSubview(marquee)
-        marquee.reloadData(datas: createModels(count: 11))
+        addMarquee()
+//        addMarquee2()
     }
 }
 
-extension ViewController : LzMarqueeViewProtocol {
-    func clickOnCurrentModel(marquee: LzMarqueeView, model: Person) {
-        print(model.name + String(model.age))
-    }
-    
+extension ViewController {
     func createModels(count : Int) -> Array<Person> {
         var array = Array<Person>()
         for i in 1...count {
@@ -39,5 +32,45 @@ extension ViewController : LzMarqueeViewProtocol {
             array.append(p)
         }
         return array
+    }
+}
+
+//extension ViewController : LzMarqueeView2Protocol {
+//
+//    func addMarquee2(){
+//        let marquee2 = LzMarqueeView2(frame: CGRect(x: 0, y: 200, width: self.view.frame.size.width, height: 120))
+//        marquee2.backgroundColor = UIColor.cyan
+//        view.addSubview(marquee2)
+//        marquee2.delegate = self
+//        marquee2.reloadData(data: createModels(count: 9))
+//    }
+//
+//    func lzMarqueeView2ClickedModel(model: Person) {
+//        print(model.name + String(model.age))
+//        let title = model.name + String(model.age)
+//        let alertVC = UIAlertController.init(title: title, message: "点击了一对item的跑马灯", preferredStyle: UIAlertController.Style.alert)
+//        let action = UIAlertAction.init(title: "sure", style: UIAlertAction.Style.default, handler: nil)
+//        alertVC.addAction(action)
+//        present(alertVC, animated: true, completion: nil)
+//    }
+//}
+
+extension ViewController : LzMarqueeViewProtocol {
+    
+    func addMarquee(){
+        let marquee = LzMarqueeView(frame: CGRect(x: 0, y: 100, width: self.view.frame.size.width, height: 60))
+        marquee.backgroundColor = UIColor.orange
+        view.addSubview(marquee)
+        marquee.delegate = self
+        marquee.reloadData(datas: createModels(count: 11))
+    }
+    
+    func clickOnCurrentModel(model: Person) {
+        print(model.name + String(model.age))
+        let title = model.name + String(model.age)
+        let alertVC = UIAlertController.init(title: title, message: "点击了单个item的跑马灯", preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction.init(title: "sure", style: UIAlertAction.Style.default, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
     }
 }

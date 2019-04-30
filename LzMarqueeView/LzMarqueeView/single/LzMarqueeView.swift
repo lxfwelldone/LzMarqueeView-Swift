@@ -10,10 +10,10 @@ import UIKit
 
 
 protocol LzMarqueeViewProtocol : class {
-    func clickOnCurrentModel(marquee : LzMarqueeView, model : Person)
+    func clickOnCurrentModel(model : Person)
 }
 
-class LzMarqueeView: UIView {
+class LzMarqueeView: UIView{
 
     /*
     * 这是一个内容由上而下无限滚动的view
@@ -29,14 +29,12 @@ class LzMarqueeView: UIView {
     private lazy var itemFirst : LzMarqueeItem = {
         let itemFirst = LzMarqueeItem(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
         itemFirst.backgroundColor = UIColor.blue
-        itemFirst.delegate = self
         return itemFirst
     }()
 
-    private lazy var itemSecond : LzMarqueeItem = { 
+    private lazy var itemSecond : LzMarqueeItem = {
         let itemSecond = LzMarqueeItem(frame: CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: self.frame.size.height))
         itemSecond.backgroundColor = UIColor.red
-        itemSecond.delegate = self
         return itemSecond
     }()
 
@@ -48,18 +46,19 @@ class LzMarqueeView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
-extension LzMarqueeView : LzMarqueeItemProtocol{
-    func lzMarqueeItemClicked(item: LzMarqueeItem, model: Person) {
-        delegate?.clickOnCurrentModel(marquee: self, model: model)
-    }
-}
 
-extension LzMarqueeView {
+extension LzMarqueeView : LzMarqueeItemProtocol {
+    
     func setUI(){
         self.clipsToBounds = true
+        self.isUserInteractionEnabled = true
+    }
+    
+    func lzMarqueeItemClicked(model: Person) {
+        print("--------------------------")
+        delegate?.clickOnCurrentModel(model: model)
     }
     
     func reloadData(datas : [Person]) {
@@ -72,9 +71,11 @@ extension LzMarqueeView {
         }
         if self.datas.count > 0 {
             addSubview(itemFirst)
+            itemFirst.delegate = self
             itemFirst.displayModel(model: self.datas[0])
             if self.datas.count >= 2 {
                 addSubview(itemSecond)
+                itemSecond.delegate = self
                 startTimer()
             }
         }else {
@@ -110,26 +111,26 @@ extension LzMarqueeView {
    @objc func scrollFromBottomToTop(){
 
         let viewToTop : LzMarqueeItem
-        let viewFromBottm : LzMarqueeItem
+        let viewFromBottom : LzMarqueeItem
         if isShowFirst {
-            viewFromBottm = itemSecond
+            viewFromBottom = itemSecond
             viewToTop = itemFirst
         } else {
             viewToTop = itemSecond
-            viewFromBottm = itemFirst
+            viewFromBottom = itemFirst
         }
         isShowFirst = !isShowFirst
-        viewFromBottm.frame = CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: self.frame.size.height)
+        viewFromBottom.frame = CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: self.frame.size.height)
         
         if dataIndex >= datas.count-1 {
             dataIndex = 0
         } else {
             dataIndex += 1
         }
-        viewFromBottm.displayModel(model: datas[dataIndex])
-    
-        UIView.animate(withDuration: duration) {
-            viewFromBottm.frame = CGRect(x: 0, y: 0, width: viewFromBottm.frame.size.width, height: viewFromBottm.frame.size.height)
+        viewFromBottom.displayModel(model: datas[dataIndex])
+        viewFromBottom.delegate = self
+        UIView.animate(withDuration: 2) {
+            viewFromBottom.frame = CGRect(x: 0, y: 0, width: viewFromBottom.frame.size.width, height: viewFromBottom.frame.size.height)
             viewToTop.frame = CGRect(x: 0, y: -viewToTop.frame.size.height, width: viewToTop.frame.size.width, height: viewToTop.frame.size.height)
         }
 
