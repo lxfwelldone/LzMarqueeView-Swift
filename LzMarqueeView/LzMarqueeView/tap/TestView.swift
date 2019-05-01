@@ -15,7 +15,8 @@ protocol TestViewDelegate : class{
 class TestView: UIView, LzMarqueeItemDelegate {
 
     weak var delegate : TestViewDelegate?
-    let person : Person = Person(name: "bbbbb", age: 22)
+    let person1 : Person = Person(name: "aaaa", age: 11)
+    let person2 : Person = Person(name: "bbbb", age: 22)
     lazy var itemFirst : LzMarqueeItem = { [weak self] in
         let first = LzMarqueeItem(frame: CGRect(x: 0, y: 0, width: (self?.frame.size.width)!, height: (self?.frame.size.height)!/2))
         first.delegate = self!
@@ -34,15 +35,15 @@ class TestView: UIView, LzMarqueeItemDelegate {
         super.init(frame: frame)
         addSubview(self.itemFirst)
         addSubview(self.itemSecond)
-        itemFirst.displayModel(self.person)
-        itemSecond.displayModel(self.person)
+        itemFirst.displayModel(self.person1)
+        itemSecond.displayModel(self.person2)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func clickOnMarqueeItemView(itemView: LzMarqueeItem, model: Person) {
+    func clickOnMarqueeItem(itemView: LzMarqueeItem, model: Person) {
         delegate?.clickOnTestView(view: self, model: model)
     }
 }

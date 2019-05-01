@@ -8,14 +8,33 @@
 
 import UIKit
 
+protocol LzViewDelegate : class {
+    func lzViewClicked()
+}
+
 class LzView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    weak var delegate : LzViewDelegate?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isUserInteractionEnabled = true
+        addTapGesture()
     }
-    */
+    
+    func addTapGesture(){
+        let t = UITapGestureRecognizer.init(target: self, action: #selector(handleGesture(tap:)))
+        addGestureRecognizer(t)
+        print(t)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("---------")
+    }
+    
+    @objc func handleGesture(tap : UITapGestureRecognizer){
+        print("------lzview的点击------")
+        delegate?.lzViewClicked()
+    }
 
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C576A7122792D7900730723 /* LzAutoScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C576A7022792D7900730723 /* LzAutoScrollView.swift */; };
+		4C576A732279303F00730723 /* LzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C576A722279303F00730723 /* LzView.swift */; };
+		4C576A762279649300730723 /* LzGCDTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C576A752279649300730723 /* LzGCDTimer.swift */; };
 		4C6BCCF12271316300976D42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6BCCF02271316300976D42 /* AppDelegate.swift */; };
 		4C6BCCF32271316300976D42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6BCCF22271316300976D42 /* ViewController.swift */; };
 		4C6BCCF62271316300976D42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6BCCF42271316300976D42 /* Main.storyboard */; };
@@ -18,9 +21,13 @@
 		4C7B03F522767964008CC64C /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B03F422767964008CC64C /* Person.swift */; };
 		4C7B03F722767EBF008CC64C /* p.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B03F622767EBF008CC64C /* p.jpg */; };
 		4C7B03FB227731B5008CC64C /* LzMarqueeItem2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B03FA227731B5008CC64C /* LzMarqueeItem2.swift */; };
+		4C82F7232278B273006A5693 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C82F7222278B273006A5693 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C576A7022792D7900730723 /* LzAutoScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LzAutoScrollView.swift; sourceTree = "<group>"; };
+		4C576A722279303F00730723 /* LzView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LzView.swift; sourceTree = "<group>"; };
+		4C576A752279649300730723 /* LzGCDTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LzGCDTimer.swift; sourceTree = "<group>"; };
 		4C6BCCED2271316300976D42 /* LzMarqueeView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LzMarqueeView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6BCCF02271316300976D42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C6BCCF22271316300976D42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +41,7 @@
 		4C7B03F422767964008CC64C /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		4C7B03F622767EBF008CC64C /* p.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = p.jpg; sourceTree = "<group>"; };
 		4C7B03FA227731B5008CC64C /* LzMarqueeItem2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LzMarqueeItem2.swift; sourceTree = "<group>"; };
+		4C82F7222278B273006A5693 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C576A6F22792D3700730723 /* timer */ = {
+			isa = PBXGroup;
+			children = (
+				4C576A7022792D7900730723 /* LzAutoScrollView.swift */,
+				4C576A722279303F00730723 /* LzView.swift */,
+			);
+			path = timer;
+			sourceTree = "<group>";
+		};
+		4C576A742279410F00730723 /* tap */ = {
+			isa = PBXGroup;
+			children = (
+				4C82F7222278B273006A5693 /* TestView.swift */,
+			);
+			path = tap;
+			sourceTree = "<group>";
+		};
 		4C6BCCE42271316300976D42 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +93,9 @@
 			children = (
 				4C6BCCF02271316300976D42 /* AppDelegate.swift */,
 				4C6BCCF22271316300976D42 /* ViewController.swift */,
+				4C576A752279649300730723 /* LzGCDTimer.swift */,
+				4C576A742279410F00730723 /* tap */,
+				4C576A6F22792D3700730723 /* timer */,
 				4C7B03F922773177008CC64C /* double */,
 				4C7B03F822773167008CC64C /* single */,
 				4C7B03F622767EBF008CC64C /* p.jpg */,
@@ -170,13 +198,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C576A732279303F00730723 /* LzView.swift in Sources */,
 				4C7B03F522767964008CC64C /* Person.swift in Sources */,
 				4C6BCCF32271316300976D42 /* ViewController.swift in Sources */,
+				4C576A762279649300730723 /* LzGCDTimer.swift in Sources */,
 				4C6BCCF12271316300976D42 /* AppDelegate.swift in Sources */,
 				4C6BCD05227131F600976D42 /* LzMarqueeView2.swift in Sources */,
+				4C82F7232278B273006A5693 /* TestView.swift in Sources */,
 				4C6BCD032271319400976D42 /* LzMarqueeView.swift in Sources */,
 				4C7B03FB227731B5008CC64C /* LzMarqueeItem2.swift in Sources */,
 				4C7B03F322767456008CC64C /* LzMarqueeItem.swift in Sources */,
+				4C576A7122792D7900730723 /* LzAutoScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7674N8JF99;
 				INFOPLIST_FILE = LzMarqueeView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

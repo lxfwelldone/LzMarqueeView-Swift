@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol LzMarqueeView2Protocol : class {
-    func lzMarqueeView2ClickedModel(model : Person)
+protocol LzMarqueeView2Delegate : class {
+    func clickOnMarqueeView2(view : LzMarqueeView2, model : Person)
 }
 
 
 class LzMarqueeView2 : UIView {
 
-    weak var delegate : LzMarqueeView2Protocol? = nil
+    weak var delegate : LzMarqueeView2Delegate? = nil
     var datas : [Person] = [Person]()
     var dataIndex : Int = 0
     var isShowFirst : Bool = true
@@ -65,8 +65,8 @@ extension LzMarqueeView2 {
     }
     
     func configModels(){
-        var model1 : Person
-        var model2 : Person
+        let model1 : Person
+        let model2 : Person
         model1 = datas[dataIndex]
         if dataIndex < datas.count-2 {
             model2 = datas[dataIndex + 1]
@@ -123,8 +123,9 @@ extension LzMarqueeView2 {
     }
 }
 
-extension LzMarqueeView2 : LzMarqueeItem2Protocol {
-    func lzMarqueeItem2ProtocolClickedModel(model: Person) {
-        delegate?.lzMarqueeView2ClickedModel(model: model)
+extension LzMarqueeView2 : LzMarqueeItem2Delegate {
+
+    func clickOnItem2View(itemView: LzMarqueeItem2, model: Person) {
+        
     }
 }
